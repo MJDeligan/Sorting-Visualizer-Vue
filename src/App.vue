@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app dark >
     <v-navigation-drawer
       app
       v-model="drawer"
@@ -20,7 +20,9 @@
       
     </v-app-bar>
 
-    <v-main app>
+    <v-main
+      app
+    >
       <div class="text-center text-h3 pt-6 font-weight-bold">{{ $store.state.selected }}</div>
       <SortWrapper @drawer="drawer = !drawer" />
     </v-main>
@@ -28,24 +30,39 @@
       app
       grow
       absolute
+      fixed
     >
-      <v-btn @click="sort" :disabled="disable">
+      <v-btn
+        @click="sort"
+        :disabled="disable"
+      >
         <span>Sort</span>
         <v-icon>mdi-sort-variant</v-icon>
       </v-btn>
-      <v-btn @click="cancel" :disabled="!$store.state.sorting">
+      <v-btn
+        @click="cancel"
+        :disabled="!$store.state.sorting"
+      >
         <span>Cancel</span>
         <v-icon>mdi-cancel</v-icon>
       </v-btn>
-      <v-btn @click="refresh" :disabled="$store.state.sorting">
+      <v-btn
+        @click="refresh"
+        :disabled="$store.state.sorting"
+      >
         <span>New Values</span>
         <v-icon>mdi-refresh</v-icon>
       </v-btn>
-      <v-btn @click="shuffle" :disabled="$store.state.sorting">
+      <v-btn
+        @click="shuffle"
+        :disabled="$store.state.sorting"
+      >
         <span>Shuffle</span>
         <v-icon>mdi-shuffle-variant</v-icon>
       </v-btn>
-      <v-btn @click="drawer = !drawer">
+      <v-btn
+        @click="drawer = !drawer"
+      >
         <span>Controls</span>
         <v-icon>mdi-tune</v-icon>
       </v-btn>
