@@ -34,7 +34,7 @@
                 class="ml-0"
                 hide-details
                 v-model="speed"
-                :min="1"
+                :min="5"
                 :max="500"
             >
             </v-slider>
