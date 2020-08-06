@@ -6,7 +6,8 @@
       bottom
       temporary
       hide-overlay
-      width="512"
+      :width="!$vuetify.breakpoint.mobile ? '512' : ''"
+      tag="div"
       class="nav-drawer"
     >
       <SortControls @drawer="drawer = !drawer" />
@@ -23,7 +24,7 @@
     <v-main
       app
     >
-      <div class="text-center text-h3 pt-6 font-weight-bold">{{ $store.state.selected }}</div>
+      <div class="text-center text-h4 pt-6 font-weight-bold">{{ $store.state.selected }}</div>
       <SortWrapper @drawer="drawer = !drawer" />
     </v-main>
     <v-bottom-navigation
