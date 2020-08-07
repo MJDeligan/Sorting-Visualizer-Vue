@@ -24,7 +24,8 @@
     <v-main
       app
     >
-      <div class="text-center text-h4 pt-6 font-weight-bold">{{ $store.state.selected }}</div>
+      <div class="text-center text-h4 pt-6 font-weight-bold" id="sort-header">{{ $store.state.selected }}</div>
+      <div class="text-center warning" v-if="tooBigForBogo">Warning this might take a while!</div>
       <SortWrapper @drawer="drawer = !drawer" />
     </v-main>
     <v-bottom-navigation
@@ -42,21 +43,21 @@
       </v-btn>
       <v-btn
         @click="cancel"
-        :disabled="!$store.state.sorting"
+        :disabled="!disable"
       >
         <span>Cancel</span>
         <v-icon>mdi-cancel</v-icon>
       </v-btn>
       <v-btn
         @click="refresh"
-        :disabled="$store.state.sorting"
+        :disabled="disable"
       >
         <span>New Values</span>
         <v-icon>mdi-refresh</v-icon>
       </v-btn>
       <v-btn
         @click="shuffle"
-        :disabled="$store.state.sorting"
+        :disabled="disable"
       >
         <span>Shuffle</span>
         <v-icon>mdi-shuffle-variant</v-icon>
@@ -68,6 +69,7 @@
         <v-icon>mdi-tune</v-icon>
       </v-btn>
     </v-bottom-navigation>
+    <Instructions />
   </v-app>
 </template>
 
@@ -78,18 +80,24 @@ body {
 .nav-drawer {
   border-top: 1px solid #ccc;
 }
+
+#sort-header {
+  font-family: Consolas!important;
+}
 </style>
 <script>
 import { bus } from './main'
-import SortWrapper from './components/SortWrapper';
+import SortWrapper from './components/SortWrapper'
 import SortControls from './components/SortControls'
+import Instructions from './components/Instructions'
 
 export default {
   name: 'App',
 
   components: {
     SortWrapper,
-    SortControls
+    SortControls,
+    Instructions
   },
 
   data: () => ({
@@ -98,7 +106,10 @@ export default {
   }),
   computed: {
     disable() {
-      return this.$store.state.sorting || this.$store.state.selected === 'Choose Algorithm'
+      return this.$store.state.sorting
+    },
+    tooBigForBogo() {
+      return this.$store.state.numberOfValues > 7 & this.$store.state.selected === 'Bogo Sort'
     }
   },
   methods: {
