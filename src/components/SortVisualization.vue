@@ -103,6 +103,7 @@ export default {
         },
         //Durstenfeld shuffle
         shuffleValues () {
+            this.reset()
             this.$nextTick(function(){
                 for (let i = this.values.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1))
@@ -135,6 +136,7 @@ export default {
             await algorithms[this.selected]()
             await this.sortEndAnimation()
             this.$store.commit('SET_CANCEL', false)
+            this.reset()
             this.enable()
         },
         disable() {
