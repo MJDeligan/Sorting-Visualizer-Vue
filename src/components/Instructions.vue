@@ -109,8 +109,6 @@
                 <v-card-text class="text-body-1">For Contact</v-card-text>
                 <v-card-text class="text-decoration-underline font-weight-bold pb-0">Via Email:</v-card-text>
                 <v-card-text><a href="mailto:marco.razor@hotmail.com">marco.razor@hotmail.com</a></v-card-text>
-                <v-card-text class="text-decoration-underline font-weight-bold pb-0">My website:</v-card-text>
-                <v-card-text><a href="marco-reiser.net">marco-reiser.net</a></v-card-text>
                 <div class="d-flex pa-6 mt-auto">
                     <v-spacer></v-spacer>
                     <v-btn
